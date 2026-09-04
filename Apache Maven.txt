@@ -1,0 +1,317 @@
+Apache Maven is one of the most useful tools to learn if you're working with Java. It automates building, testing, packaging, and managing dependencies for your projects.
+
+Here's a practical learning roadmap.
+
+What is Apache Maven?
+
+Apache Maven is a build automation and dependency management tool for Java projects.
+
+Instead of manually downloading JAR files and compiling Java code, Maven does it for you.
+
+For example, without Maven you would:
+
+Download required JAR files manually.
+Add them to your project.
+Compile Java files yourself.
+Package everything into a JAR or WAR.
+
+With Maven, a single command can:
+
+Download dependencies
+Compile code
+Run tests
+Create a JAR/WAR
+Install the project locally
+Prerequisites
+
+Before learning Maven, you should know:
+
+Basic Java
+Java classes and packages
+Command line basics
+What a JAR file is
+Maven Architecture
+Project
+   |
+pom.xml
+   |
+   +---- Dependencies
+   +---- Plugins
+   +---- Build
+   +---- Repositories
+
+The heart of every Maven project is:
+
+pom.xml
+
+POM stands for Project Object Model.
+
+Install Maven
+Install Java (JDK 17 or newer is recommended).
+Download Maven.
+Set the environment variables.
+Verify:
+mvn -version
+
+Expected output:
+
+Apache Maven 3.x.x
+Java version: 17
+Create Your First Maven Project
+mvn archetype:generate
+
+Or create one quickly:
+
+mvn archetype:generate \
+-DgroupId=com.example \
+-DartifactId=hello-maven \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DinteractiveMode=false
+
+Project structure:
+
+hello-maven
+│
+├── pom.xml
+├── src
+│   ├── main
+│   │    └── java
+│   └── test
+│        └── java
+Understanding pom.xml
+
+Example:
+
+<project>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+
+    <artifactId>hello-maven</artifactId>
+
+    <version>1.0</version>
+
+    <dependencies>
+
+    </dependencies>
+
+</project>
+
+Meaning:
+
+Tag	Purpose
+groupId	Organization/package name
+artifactId	Project name
+version	Project version
+dependencies	Libraries needed
+Maven Directory Structure
+src/
+
+   main/
+
+      java/
+
+      resources/
+
+   test/
+
+      java/
+
+      resources/
+Maven Lifecycle
+
+Maven has built-in lifecycles.
+
+The most common phases are:
+
+validate
+
+compile
+
+test
+
+package
+
+verify
+
+install
+
+deploy
+
+Example:
+
+Compile
+
+mvn compile
+
+Create JAR
+
+mvn package
+
+Install locally
+
+mvn install
+
+Clean build
+
+mvn clean install
+Dependencies
+
+Suppose you need JUnit.
+
+Add this:
+
+<dependencies>
+
+    <dependency>
+
+        <groupId>org.junit.jupiter</groupId>
+
+        <artifactId>junit-jupiter</artifactId>
+
+        <version>5.11.0</version>
+
+        <scope>test</scope>
+
+    </dependency>
+
+</dependencies>
+
+Run:
+
+mvn test
+
+Maven automatically downloads the library.
+
+Maven Repository
+
+There are three types:
+
+Local Repository
+~/.m2/repository
+
+Stores downloaded libraries.
+
+Central Repository
+
+Default online repository used by Maven.
+
+Remote Repository
+
+Private repositories used by organizations.
+
+Common Maven Commands
+mvn clean
+
+Delete previous build.
+
+mvn compile
+
+Compile Java.
+
+mvn test
+
+Run tests.
+
+mvn package
+
+Create JAR.
+
+mvn install
+
+Install to local repository.
+
+mvn dependency:tree
+
+Show dependency hierarchy.
+
+mvn dependency:resolve
+
+Download all dependencies.
+
+Maven Plugins
+
+Plugins add functionality.
+
+Example:
+
+<build>
+
+    <plugins>
+
+        <plugin>
+
+            <groupId>org.apache.maven.plugins</groupId>
+
+            <artifactId>maven-compiler-plugin</artifactId>
+
+            <version>3.13.0</version>
+
+        </plugin>
+
+    </plugins>
+
+</build>
+Maven Coordinates
+
+Every artifact has:
+
+groupId
+
+artifactId
+
+version
+
+Example:
+
+org.springframework
+
+spring-core
+
+6.2.1
+Dependency Scopes
+Scope	Meaning
+compile	Default
+provided	Supplied by runtime
+runtime	Needed only at runtime
+test	Only for tests
+system	Local file (rarely used)
+import	For dependency management
+Useful Commands
+
+View effective POM:
+
+mvn help:effective-pom
+
+Show dependency tree:
+
+mvn dependency:tree
+
+Show Maven version:
+
+mvn -version
+
+Skip tests:
+
+mvn package -DskipTests
+Best Learning Path (7 Days)
+
+Day 1: Install Maven, learn project structure, understand pom.xml.
+
+Day 2: Learn the Maven lifecycle (compile, test, package, install).
+
+Day 3: Add dependencies (e.g., JUnit), explore the local repository, and inspect the dependency tree.
+
+Day 4: Learn about plugins and customize the build.
+
+Day 5: Build a simple Java console application using Maven.
+
+Day 6: Learn dependency scopes and multi-module projects.
+
+Day 7: Create a REST API project using Maven with a framework like Spring Boot.
+
+Recommended Resources
+Apache Maven Documentation — The official documentation, including installation, guides, and plugin references.
+Maven in 5 Minutes — A quick hands-on introduction.
+Maven Central Repository — Search for Maven dependencies and versions.
